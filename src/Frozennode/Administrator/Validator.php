@@ -1,6 +1,8 @@
 <?php
 namespace Frozennode\Administrator;
 
+use Illuminate\Routing\UrlGenerator;
+
 class Validator extends \Illuminate\Validation\Validator {
 
 	protected $overrideCustomMessages = array(
@@ -16,18 +18,18 @@ class Validator extends \Illuminate\Validation\Validator {
 	/**
 	 * The URL instance
 	 *
-	 * @var \Illuminate\Routing\UrlGenerator
+	 * @var UrlGenerator
 	 */
 	protected $url;
 
 	/**
 	 * Injects the URL class instance
 	 *
-	 * @param \Illuminate\Routing\UrlGenerator $url
+	 * @param UrlGenerator $url
 	 *
 	 * @return void
 	 */
-	public function setUrlInstance(\Illuminate\Routing\UrlGenerator $url)
+	public function setUrlInstance(UrlGenerator $url)
 	{
 		$this->url = $url;
 	}
@@ -35,7 +37,7 @@ class Validator extends \Illuminate\Validation\Validator {
 	/**
 	 * Gets the URL class instance
 	 *
-	 * @return \Illuminate\Routing\UrlGenerator
+	 * @return UrlGenerator
 	 */
 	public function getUrlInstance()
 	{
@@ -124,7 +126,7 @@ class Validator extends \Illuminate\Validation\Validator {
 	/**
 	 * Validates that an item is an array
 	 */
-	public function validateArray($attribute, $value)
+	public function validateArray($attribute, $value, $parameters = [])
 	{
 		return is_array($value);
 	}
